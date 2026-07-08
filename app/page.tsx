@@ -1,65 +1,114 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const navLinks = [
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/writing", label: "Writing" },
+  { href: "/contact", label: "Contact" },
+];
+
+const socials = [
+  { href: "https://github.com/Lioryanwo", label: "GitHub" },
+  {
+    href: "https://www.linkedin.com/in/lior-yanwo-0537b6345/",
+    label: "LinkedIn",
+  },
+  { href: "mailto:lioryanow@gmail.com", label: "Email" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
+      <nav className="flex items-center justify-between">
+        <Link href="/" className="font-mono text-sm text-accent">
+          lior<span className="text-faint">.dev</span>
+        </Link>
+        <div className="flex gap-5 text-sm text-muted sm:gap-7">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-foreground"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      <section className="mt-20 sm:mt-28">
+        <p className="font-mono text-sm text-accent">~/hello-world</p>
+        <h1 className="mt-3 text-4xl font-medium sm:text-5xl">I&apos;m Lior.</h1>
+        <p className="mt-4 max-w-xl leading-relaxed text-muted">
+          Third-year Computer Science student building intelligent systems —
+          from reinforcement learning agents and RAG security research to
+          full-stack apps with Next.js.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/projects"
+            className="rounded-lg border border-accent px-4 py-2 text-sm text-accent transition-colors hover:bg-accent hover:text-background"
+          >
+            View projects →
+          </Link>
+          <Link
+            href="/contact"
+            className="rounded-lg border border-line px-4 py-2 text-sm text-muted transition-colors hover:border-foreground hover:text-foreground"
+          >
+            Get in touch
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-16 overflow-hidden rounded-xl border border-line bg-card">
+        <div className="border-b border-line px-4 py-2 font-mono text-xs text-faint">
+          lior@vercel — zsh
+        </div>
+        <div className="space-y-1 p-4 font-mono text-sm leading-7">
+          <p>
+            <span className="text-accent">$</span> whoami
+          </p>
+          <p className="text-muted">
+            Lior Yanwo — CS student · AI &amp; ML · full-stack
+          </p>
+          <p>
+            <span className="text-accent">$</span> cat interests.txt
+          </p>
+          <p className="text-muted">
+            reinforcement learning · RAG security · web engineering
+          </p>
+          <p>
+            <span className="text-accent">$</span> ls ./site
+          </p>
+          <p className="text-accent">
+            about/&nbsp;&nbsp;projects/&nbsp;&nbsp;writing/&nbsp;&nbsp;contact/
+          </p>
+          <p>
+            <span className="text-accent">$</span>{" "}
+            <span className="animate-pulse text-accent">█</span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      </section>
+
+      <section className="mt-10 flex flex-wrap gap-3">
+        {socials.map((social) => (
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            key={social.label}
+            href={social.href}
+            target={social.href.startsWith("http") ? "_blank" : undefined}
+            rel={
+              social.href.startsWith("http") ? "noopener noreferrer" : undefined
+            }
+            className="rounded-full border border-line px-4 py-1.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            {social.label} ↗
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        ))}
+      </section>
+
+      <footer className="mt-24 border-t border-line pt-6 text-xs text-faint">
+        © 2026 Lior Yanwo · Built with Next.js, deployed on Vercel
+      </footer>
+    </main>
   );
 }

@@ -17,7 +17,7 @@ export default function Home() {
       <Nav />
 
       <section className="mt-20 sm:mt-28">
-        <h1 className="mt-3 text-4xl font-medium sm:text-5xl">I&apos;m Lior.</h1>
+        <h1 className="mt-3 text-4xl font-medium sm:text-5xl">Lior Yanwo</h1>
         <p className="mt-4 max-w-xl leading-relaxed text-muted">
           Third-year Computer Science student building intelligent systems —
           from reinforcement learning agents and RAG security research to

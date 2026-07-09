@@ -1,11 +1,6 @@
 import Link from "next/link";
-
-const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
-  { href: "/contact", label: "Contact" },
-];
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const socials = [
   { href: "https://github.com/Lioryanwo", label: "GitHub" },
@@ -19,22 +14,7 @@ const socials = [
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
-      <nav className="flex items-center justify-between">
-        <Link href="/" className="font-mono text-sm text-accent">
-          lior<span className="text-faint">.dev</span>
-        </Link>
-        <div className="flex gap-5 text-sm text-muted sm:gap-7">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <Nav />
 
       <section className="mt-20 sm:mt-28">
         <p className="font-mono text-sm text-accent">~/hello-world</p>
@@ -106,9 +86,7 @@ export default function Home() {
         ))}
       </section>
 
-      <footer className="mt-24 border-t border-line pt-6 text-xs text-faint">
-        © 2026 Lior Yanwo · Built with Next.js, deployed on Vercel
-      </footer>
+      <Footer />
     </main>
   );
 }

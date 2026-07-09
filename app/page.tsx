@@ -1,11 +1,6 @@
 import Link from "next/link";
-
-const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
-  { href: "/contact", label: "Contact" },
-];
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const socials = [
   { href: "https://github.com/Lioryanwo", label: "GitHub" },
@@ -18,71 +13,71 @@ const socials = [
 
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
-      <nav className="flex items-center justify-between">
-        <Link href="/" className="font-mono text-sm text-accent">
-          lior<span className="text-faint">.dev</span>
-        </Link>
-        <div className="flex gap-5 text-sm text-muted sm:gap-7">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </nav>
+    <main className="relative mx-auto w-full max-w-5xl flex-1 overflow-hidden px-6 py-10">
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl" />
 
-      <section className="mt-20 sm:mt-28">
-        <p className="font-mono text-sm text-accent">~/hello-world</p>
-        <h1 className="mt-3 text-4xl font-medium sm:text-5xl">I&apos;m Lior.</h1>
-        <p className="mt-4 max-w-xl leading-relaxed text-muted">
+      <Nav />
+
+      <section className="mt-24 sm:mt-32">
+        <p className="font-mono text-sm text-accent">$ whoami</p>
+
+        <h1 className="mt-4 max-w-3xl text-5xl font-semibold tracking-tight sm:text-7xl">
+          Lior Yanwo
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
           Third-year Computer Science student building intelligent systems —
           from reinforcement learning agents and RAG security research to
           full-stack apps with Next.js.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+
+        <div className="mt-10 flex flex-wrap gap-4">
           <Link
             href="/projects"
-            className="rounded-lg border border-accent px-4 py-2 text-sm text-accent transition-colors hover:bg-accent hover:text-background"
+            className="rounded-full border border-accent bg-accent px-5 py-2.5 text-sm font-medium text-background transition hover:bg-transparent hover:text-accent"
           >
             View projects →
           </Link>
+
           <Link
             href="/contact"
-            className="rounded-lg border border-line px-4 py-2 text-sm text-muted transition-colors hover:border-foreground hover:text-foreground"
+            className="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-muted transition hover:border-foreground hover:text-foreground"
           >
             Get in touch
           </Link>
         </div>
       </section>
 
-      <section className="mt-16 overflow-hidden rounded-xl border border-line bg-card">
-        <div className="border-b border-line px-4 py-2 font-mono text-xs text-faint">
-          lior@vercel — zsh
+      <section className="mt-20 overflow-hidden rounded-2xl border border-line bg-card/80 shadow-2xl shadow-black/30 backdrop-blur">
+        <div className="flex items-center gap-2 border-b border-line px-5 py-3 font-mono text-xs text-faint">
+          <span className="h-3 w-3 rounded-full bg-red-500/70" />
+          <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
+          <span className="h-3 w-3 rounded-full bg-green-500/70" />
+          <span className="ml-3">lior@vercel — zsh</span>
         </div>
-        <div className="space-y-1 p-4 font-mono text-sm leading-7">
+
+        <div className="space-y-3 p-5 font-mono text-sm leading-7 sm:p-7 sm:text-base">
           <p>
             <span className="text-accent">$</span> whoami
           </p>
           <p className="text-muted">
             Lior Yanwo — CS student · AI &amp; ML · full-stack
           </p>
+
           <p>
             <span className="text-accent">$</span> cat interests.txt
           </p>
           <p className="text-muted">
             reinforcement learning · RAG security · web engineering
           </p>
+
           <p>
             <span className="text-accent">$</span> ls ./site
           </p>
           <p className="text-accent">
             about/&nbsp;&nbsp;projects/&nbsp;&nbsp;writing/&nbsp;&nbsp;contact/
           </p>
+
           <p>
             <span className="text-accent">$</span>{" "}
             <span className="animate-pulse text-accent">█</span>
@@ -99,16 +94,14 @@ export default function Home() {
             rel={
               social.href.startsWith("http") ? "noopener noreferrer" : undefined
             }
-            className="rounded-full border border-line px-4 py-1.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+            className="rounded-full border border-line px-4 py-2 text-sm text-muted transition hover:border-accent hover:text-accent"
           >
             {social.label} ↗
           </a>
         ))}
       </section>
 
-      <footer className="mt-24 border-t border-line pt-6 text-xs text-faint">
-        © 2026 Lior Yanwo · Built with Next.js, deployed on Vercel
-      </footer>
+      <Footer />
     </main>
   );
 }

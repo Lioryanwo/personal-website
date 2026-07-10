@@ -48,14 +48,14 @@ export default function AboutPage() {
           </div>
 
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-2xl border border-line bg-card lg:mx-0 lg:justify-self-end">
-            <Image
-              src="/images/profile.png"
-              alt="Portrait of Lior Yanwo"
-              fill
-              priority
-              sizes="(min-width: 1024px) 280px, 60vw"
-              className="object-cover object-top"
-            />
+          <Image
+            src="/images/profile.png"
+            alt="Portrait of Lior Yanwo"
+            fill
+            priority
+            sizes="(min-width: 1024px) 280px, 60vw"
+            className="object-cover object-top"
+          />
           </div>
         </section>
 

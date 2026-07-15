@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+tone_instructions: "Be direct and terse. State the tradeoff, not the pleasantries."
+
+reviews:
+  profile: chill
+  high_level_summary: true
+  request_changes_workflow: false
+  poem: false
+  sequence_diagrams: true
+
+  instructions: |
+    Review under AI-Driven Development principles, not vibe-coding norms.
+
+    Priorities, in order:
+    1. Correctness and security bugs.
+    2. Scope discipline — flag changes that go beyond the PR's stated intent.
+       Unrequested refactors, drive-by renames, and speculative abstraction
+       are review findings, not bonuses.
+    3. Architectural fit — flag code that ignores existing patterns,
+       layering, or conventions already present in the repo. Point to the
+       existing pattern by file when you do.
+    4. Simplicity — flag premature generalization, unnecessary indirection,
+       config knobs with one caller, and abstractions with one implementation.
+    5. Production readiness — error handling, edge cases, resource cleanup,
+       and observability on new paths.
+
+    When a change involves a real tradeoff (performance vs. readability,
+    coupling vs. duplication, etc.), name both sides and recommend one.
+    Do not present a neutral list.
+
+    If the intent of a change is genuinely unclear from the diff and PR
+    description, ask a specific question instead of guessing.
+
+    Do not comment on formatting, import order, or line length — linters
+    own those. Do not restate what the code does.
+
+    Every finding must be actionable: what is wrong, why it matters, what
+    to do instead. Skip it otherwise.
+
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/*.lock"
+    - "!**/*.generated.*"

@@ -17,7 +17,9 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60">
